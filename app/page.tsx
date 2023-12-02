@@ -1,17 +1,19 @@
 import HeroCarousel from "@/components/HeroCarousel"
 import Image from "next/image"
 import Searchbar from "@/components/Searchbar"
-
+import { getAllProducts } from "@/lib/actions"
+import ProductCard from "@/components/ProductCard"
 
 const Home = async () => {
 
+  const allProducts = await getAllProducts();
 
   return (
     <>
       <section className="px-6 md:px-20 py-24">
         <div className="flex max-xl:flex-col gap-16">
           <div className="flex flex-col justify-center">
-            <p className="small-text">
+            <p className="orange">
               Smart Shopping Starts Here:
               <Image
                 src="/assets/icons/arrow-right.svg"
@@ -23,11 +25,12 @@ const Home = async () => {
 
             <h1 className="head-text">
               Unleash the Power of
-              <span className="text-primary"> PriceWise</span>
+              <span className="orange-gradient"> PriceTracker</span>
             </h1>
 
             <p className="mt-6">
-              Powerful, self-serve product and growth analytics to help you convert, engage, and retain more.
+              Enter Shein URL below to keep track of price changes to
+              get notified and save money
             </p>
 
             <Searchbar />
@@ -39,6 +42,11 @@ const Home = async () => {
 
       <section className="trending-section">
         <h2 className="section-text">Trending</h2>
+        <div className="flex flex-wrap gap-x-8 gap-y-16">
+          {allProducts?.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
       </section>
     </>
   )

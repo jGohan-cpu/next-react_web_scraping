@@ -28,6 +28,14 @@
     @apply text-secondary text-[32px] font-semibold;
   }
 
+  .orange-gradient {
+    @apply bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 bg-clip-text text-transparent;
+  }
+
+  .orange {
+    @apply text-orange-400;
+  }
+
   .small-text {
     @apply flex gap-2 text-sm font-medium text-primary;
   }

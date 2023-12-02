@@ -3,15 +3,15 @@
 import { FormEvent, useState } from 'react'
 import { scrapeAndStoreProduct } from '@/lib/actions';
 
-const isValidAmazonProductURL = (url: string) => {
+const isValidSheinProductURL = (url: string) => {
     try {
         const parsedURL = new URL(url);
         const hostname = parsedURL.hostname;
 
         if (
-            hostname.includes('amazon.com') ||
-            hostname.includes('amazon.') ||
-            hostname.endsWith('amazon')
+            hostname.includes('shein.com') ||
+            hostname.includes('shein.') ||
+            hostname.endsWith('shein')
         ) {
             return true;
         }
@@ -29,9 +29,9 @@ const Searchbar = () => {
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const isValidLink = isValidAmazonProductURL(searchPrompt);
+        const isValidLink = isValidSheinProductURL(searchPrompt);
 
-        if (!isValidLink) return alert('Please provide a valid Amazon link')
+        if (!isValidLink) return alert('Please provide a valid TCGPlayer link')
 
         try {
             setIsLoading(true);
