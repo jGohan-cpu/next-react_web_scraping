@@ -1,4 +1,3 @@
-import HeroCarousel from "@/components/HeroCarousel"
 import Image from "next/image"
 import Searchbar from "@/components/Searchbar"
 import { getAllProducts } from "@/lib/actions"
@@ -29,19 +28,28 @@ const Home = async () => {
             </h1>
 
             <p className="mt-6">
-              Enter Shein URL below to keep track of price changes to
+              Enter a Shein URL below to keep track of price changes to
               get notified and save money
             </p>
 
             <Searchbar />
           </div>
 
-          <HeroCarousel />
-        </div>
-      </section>
+          <Image
+            src="/assets/images/hero-1.png"
+            alt="shein-logo"
+            width={600}
+            height={600}
+            className="rounded-image"
+          />
+
+        </div >
+      </section >
+
+      <hr className="border border-gray-350" />
 
       <section className="trending-section">
-        <h2 className="section-text">Trending</h2>
+        <h2 className="section-text short-gradient">Trending Section</h2>
         <div className="flex flex-wrap gap-x-8 gap-y-16">
           {allProducts?.map((product) => (
             <ProductCard key={product.id} product={product} />
