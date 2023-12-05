@@ -14,12 +14,13 @@ const ProductCard = ({ product }: Props) => {
 
     return (
         <Link href={`/products/${product._id}`}>
-            <div className="product-card_img-container">
+            <div className="product-card_img-container hover-effect rounded-image">
                 <Image
                     src={imageUrl}
                     alt={product.title}
                     width={300}
                     height={300}
+                    className="rounded-image"
                 />
             </div>
 

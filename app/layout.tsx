@@ -21,8 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <main className="max-w-10xl mx-auto">
+      <body className={`${inter.className} flex items-center justify-center`}>
+        <div className="gradient absolute inset-0 z-0"></div>
+        <main className="content relative z-10 max-w-10xl mx-auto">
           <Navbar />
           {children}
         </main>

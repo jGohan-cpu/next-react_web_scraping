@@ -109,8 +109,9 @@ const ProductDetails = async ({ params: { id } }: Props) => {
             <hr className="border border-gray-350" />
             {similarProducts && similarProducts?.length > 0 && (
                 <div className="py-14 flex flex-col gap-2 w-full">
-                    <p className="section-text">
+                    <p className="section-text"><span className="short-gradient">
                         Trending Section
+                    </span>
                     </p>
                     <div className="flex flex-wrap gap-10 mt-7 w-full">
                         {similarProducts.map((product) => (

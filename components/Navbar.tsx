@@ -17,6 +17,7 @@ const Navbar = () => {
                         width={27}
                         height={27}
                         alt="logo"
+                        className="logo-image"
                     />
 
                     <p className="nav-logo">
