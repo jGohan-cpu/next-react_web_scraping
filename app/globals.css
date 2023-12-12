@@ -96,23 +96,11 @@
   }
 
   .product-image {
-    @apply flex-grow xl:max-w-[50%] max-w-full py-16 border border-[#CDDBFF] rounded-[17px];
+    @apply flex-grow xl:max-w-[50%] max-w-full py-16 border border-black rounded-[17px];
   }
 
   .product-info {
     @apply flex items-center flex-wrap gap-10 py-6 border-y border-y-[#E4E4E4];
-  }
-
-  .product-hearts {
-    @apply flex items-center gap-2 px-3 py-2 bg-[#FFF0F0] rounded-10;
-  }
-
-  .product-stars {
-    @apply flex items-center gap-2 px-3 py-2 bg-[#FBF3EA] rounded-[27px];
-  }
-
-  .product-reviews {
-    @apply flex items-center gap-2 px-3 py-2 bg-white-200 rounded-[27px];
   }
 
   /* MODAL */

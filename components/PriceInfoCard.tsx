@@ -23,7 +23,7 @@ const PriceInfoCard = ({ title, iconSrc, value, borderColor }: Props) => {
                     height={24}
                 />
                 <p className="text-2xl font-bold text-secondary">
-                    {value}
+                    ${value}
                 </p>
             </div>
         </div>

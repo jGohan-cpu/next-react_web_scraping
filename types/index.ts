@@ -9,7 +9,6 @@ export type User = {
 export type Product = {
     _id?: string;
     url: string;
-    currency: string;
     image: string;
     title: string;
     currentPrice: number;
@@ -17,20 +16,12 @@ export type Product = {
     priceHistory: PriceHistoryItem[] | [];
     highestPrice: number;
     lowestPrice: number;
-    averagePrice: number;
-    discountRate: number;
-    category: string;
-    reviewsCount: number;
-    stars: number;
-    isOutOfStock: Boolean;
     users?: User[];
 };
 
 export type NotificationType =
     | "WELCOME"
-    | "CHANGE_OF_STOCK"
     | "LOWEST_PRICE"
-    | "THRESHOLD_MET";
 
 export type EmailContent = {
     subject: string;

@@ -26,22 +26,24 @@ export async function scrapeSheinProduct(url: string) {
 
         const image = $('div.crop-image-container').attr('data-before-crop-src');
         const title = $('h1.product-intro__head-name').text().trim() || $('h1.product-intro__head-name.title-line-camp').text().trim();
-        const originalPrice = $('del.del-price').text().trim() || $('div.original.from').text().trim();
-        const currentPrice = $('div.discount.from').text().trim() || $('div.original.from').text().trim();
-        // const lowestPrice
-        // const averagePrice
-        // const highestPrice
+
+        //original price trasnformation
+        const originalPriceText = $('del.del-price').text().trim() || $('div.original.from').text().trim();
+        const originalPrice = Number(parseFloat(originalPriceText.replace('$', '')).toFixed(2));
+
+        //current price trasnformation
+        const currentPriceText = $('div.discount.from').text().trim() || $('div.original.from').text().trim();
+        const currentPrice = Number(parseFloat(currentPriceText.replace('$', '')).toFixed(2));
 
         const data = {
             url,
-            image: image,
+            image: image || '',
             title,
             originalPrice,
             currentPrice,
-            // lowestPrice
-            // averagePrice
-            // highestPrice
-            // priceHistory: [],
+            lowestPrice: currentPrice,
+            highestPrice: currentPrice,
+            priceHistory: []
         }
 
         console.log(data);

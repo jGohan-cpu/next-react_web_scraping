@@ -6,6 +6,7 @@ import Product from "../mongodb/schema";
 import { scrapeSheinProduct } from "../scraper"
 import { User } from "@/types";
 import { generateEmailBody, sendEmail } from "../nodemailer";
+import { getHighestPrice, getLowestPrice } from "./utils";
 
 
 export async function scrapeAndStoreProduct(productUrl: string) {
@@ -19,6 +20,7 @@ export async function scrapeAndStoreProduct(productUrl: string) {
 
         let product = scrapedProduct;
 
+
         const existingProduct = await Product.findOne({ url: scrapedProduct.url });
 
         if (existingProduct) {
@@ -29,7 +31,9 @@ export async function scrapeAndStoreProduct(productUrl: string) {
 
             product = {
                 ...scrapedProduct,
-                //priceHistory: updatedPriceHistory,
+                priceHistory: updatedPriceHistory,
+                lowestPrice: getLowestPrice(updatedPriceHistory),
+                highestPrice: getHighestPrice(updatedPriceHistory),
             }
         }
 
@@ -101,15 +105,14 @@ export async function addUserEmailToProduct(productId: string, userEmail: string
         const userExists = product.users.some((user: User) => user.email === userEmail);
 
         if (!userExists) {
-            product.users.push({ email: userEmail })
+            product.users.push({ email: userEmail });
 
             await product.save();
 
-            const emailContent = generateEmailBody(product, "WELCOME");
+            const emailContent = await generateEmailBody(product, "WELCOME");
 
             await sendEmail(emailContent, [userEmail]);
         }
-
     } catch (error) {
         console.log(error);
     }

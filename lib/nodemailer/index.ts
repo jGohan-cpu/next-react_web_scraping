@@ -1,18 +1,18 @@
-import nodemailer from 'nodemailer';
-import { EmailContent, EmailProductInfo, NotificationType } from '@/types';
+"use server"
 
-export const Notification = {
+import { EmailContent, EmailProductInfo, NotificationType } from '@/types';
+import nodemailer from 'nodemailer';
+
+const Notification = {
   WELCOME: 'WELCOME',
-  CHANGE_OF_STOCK: 'CHANGE OF STOCK',
+  OUT_OF_STOCK: 'OUT_OF_STOCK',
   LOWEST_PRICE: 'LOWEST_PRICE',
-  THRESHOLD_MET: 'THRESHOLD_MET',
 }
 
 export async function generateEmailBody(
   product: EmailProductInfo,
   type: NotificationType
 ) {
-  const THRESHOLD_PERCENTAGE = 40;
   // Shorten the product title
   const shortenedTitle =
     product.title.length > 20
@@ -41,7 +41,7 @@ export async function generateEmailBody(
       `;
       break;
 
-    case Notification.CHANGE_OF_STOCK:
+    case Notification.OUT_OF_STOCK:
       subject = `${shortenedTitle} is now back in stock!`;
       body = `
         <div>
@@ -61,15 +61,7 @@ export async function generateEmailBody(
       `;
       break;
 
-    case Notification.THRESHOLD_MET:
-      subject = `Discount Alert for ${shortenedTitle}`;
-      body = `
-        <div>
-          <h4>Hey, ${product.title} is now available at a discount more than ${THRESHOLD_PERCENTAGE}%!</h4>
-          <p>Grab it right away from <a href="${product.url}" target="_blank" rel="noopener noreferrer">here</a>.</p>
-        </div>
-      `;
-      break;
+
 
     default:
       throw new Error("Invalid notification type.");
@@ -84,16 +76,23 @@ const transporter = nodemailer.createTransport({
   port: 2525,
   auth: {
     user: 'jGohan01@outlook.com',
-    pass: 'EMAIL_PASSWORD',
+    pass: process.env.EMAIL_PASSWORD,
   },
-  maxConnection: 1
+  maxConnections: 1
 })
 
 export const sendEmail = async (emailContent: EmailContent, sendTo: string[]) => {
   const mailOptions = {
-    from: '',
+    from: 'jGohan01@outlook.com',
     to: sendTo,
     html: emailContent.body,
     subject: emailContent.subject,
+  }
+
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent: ', info);
+  } catch (error) {
+    console.log('Error sending email: ', error);
   }
 }

@@ -33,7 +33,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
                         alt={product.title}
                         width={580}
                         height={400}
-                        className="mx-auto"
+                        className="mx-auto rounded-image"
                     />
                 </div>
 
@@ -61,10 +61,10 @@ const ProductDetails = async ({ params: { id } }: Props) => {
                             <hr className="mb-4 px-64 border border-gray-350" />
                             <div className=" flex flex-col gap-2">
                                 <p className="text-[34px] text-secondary font-bold">
-                                    {product.currentPrice}
+                                    ${product.currentPrice}
                                 </p>
                                 <p className="text-[21px] text-black opacity-50 line-though">
-                                    {product.originalPrice}
+                                    ${product.originalPrice}
                                 </p>
                             </div>
                             <div className="flex flex-col gap-4">
@@ -91,13 +91,13 @@ const ProductDetails = async ({ params: { id } }: Props) => {
                                 <PriceInfoCard
                                     title="Highest Price"
                                     iconSrc="/assets/icons/arrow-up.svg"
-                                    value={`${product.price}`}
+                                    value={`${product.lowestPrice}`}
                                     borderColor="#b6dbff"
                                 />
                                 <PriceInfoCard
                                     title="Lowest Price"
                                     iconSrc="/assets/icons/arrow-down.svg"
-                                    value={`${product.price}`}
+                                    value={`${product.highestPrice}`}
                                     borderColor="#BEFFC5"
                                 />
                             </div>
