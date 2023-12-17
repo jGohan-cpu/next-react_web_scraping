@@ -28,7 +28,7 @@ export async function scrapeSheinProduct(url: string) {
         const title = $('h1.product-intro__head-name').text().trim() || $('h1.product-intro__head-name.title-line-camp').text().trim();
 
         //original price trasnformation
-        const originalPriceText = $('del.del-price').text().trim() || $('div.original.from').text().trim();
+        const originalPriceText = $('del.del-price').text().trim() || $('div.original.from').text().trim() || $('div.discount.from').text().trim();
         const originalPrice = Number(parseFloat(originalPriceText.replace('$', '')).toFixed(2));
 
         //current price trasnformation

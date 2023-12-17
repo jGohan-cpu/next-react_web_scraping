@@ -11,7 +11,8 @@ const isValidSheinProductURL = (url: string) => {
         if (
             hostname.includes('shein.com') ||
             hostname.includes('shein.') ||
-            hostname.endsWith('shein')
+            hostname.endsWith('shein') ||
+            hostname.includes('127')
         ) {
             return true;
         }
@@ -31,7 +32,7 @@ const Searchbar = () => {
 
         const isValidLink = isValidSheinProductURL(searchPrompt);
 
-        if (!isValidLink) return alert('Please provide a valid TCGPlayer link')
+        if (!isValidLink) return alert('Please provide a valid Shein link')
 
         try {
             setIsLoading(true);
@@ -55,7 +56,7 @@ const Searchbar = () => {
                 value={searchPrompt}
                 onChange={(e) => setSearchPrompt(e.target.value)}
                 placeholder="Enter product link"
-                className="searchbar-input"
+                className="searchbar-input focus:border-black border border-gray-300"
             />
 
             <button

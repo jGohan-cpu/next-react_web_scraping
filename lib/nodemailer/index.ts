@@ -5,7 +5,6 @@ import nodemailer from 'nodemailer';
 
 const Notification = {
   WELCOME: 'WELCOME',
-  OUT_OF_STOCK: 'OUT_OF_STOCK',
   LOWEST_PRICE: 'LOWEST_PRICE',
 }
 
@@ -27,26 +26,14 @@ export async function generateEmailBody(
       subject = `Welcome to Price Tracking for ${shortenedTitle}`;
       body = `
         <div>
-          <h2>Welcome to PriceWise 🚀</h2>
+          <h2>Welcome to PriceWatcher 🚀</h2>
           <p>You are now tracking ${product.title}.</p>
           <p>Here's an example of how you'll receive updates:</p>
           <div style="border: 1px solid #ccc; padding: 10px; background-color: #f8f8f8;">
-            <h3>${product.title} is back in stock!</h3>
-            <p>We're excited to let you know that ${product.title} is now back in stock.</p>
-            <p>Don't miss out - <a href="${product.url}" target="_blank" rel="noopener noreferrer">buy it now</a>!</p>
-            <img src="https://i.ibb.co/pwFBRMC/Screenshot-2023-09-26-at-1-47-50-AM.png" alt="Product Image" style="max-width: 100%;" />
+            <h3>${product.title} has reached its lowest price ever!!</h3>
+            <p>Grab the product <a href="${product.url}" target="_blank" rel="noopener noreferrer">here</p>
           </div>
           <p>Stay tuned for more updates on ${product.title} and other products you're tracking.</p>
-        </div>
-      `;
-      break;
-
-    case Notification.OUT_OF_STOCK:
-      subject = `${shortenedTitle} is now back in stock!`;
-      body = `
-        <div>
-          <h4>Hey, ${product.title} is now restocked! Grab yours before they run out again!</h4>
-          <p>See the product <a href="${product.url}" target="_blank" rel="noopener noreferrer">here</a>.</p>
         </div>
       `;
       break;
@@ -55,7 +42,7 @@ export async function generateEmailBody(
       subject = `Lowest Price Alert for ${shortenedTitle}`;
       body = `
         <div>
-          <h4>Hey, ${product.title} has reached its lowest price ever!!</h4>
+          <h4>${product.title} has reached its lowest price ever!!</h4>
           <p>Grab the product <a href="${product.url}" target="_blank" rel="noopener noreferrer">here</a> now.</p>
         </div>
       `;
