@@ -7,6 +7,8 @@ import PriceInfoCard from '@/components/PriceInfoCard'
 import ProductCard from '@/components/ProductCard'
 import Modal from '@/components/Modal'
 import ShareButton from '@/components/ShareButton'
+import DeleteButton from '@/components/DeleteButton'
+import TestButton from '@/components/TestButton'
 
 type Props = {
     params: {
@@ -55,6 +57,8 @@ const ProductDetails = async ({ params: { id } }: Props) => {
                                 <div className="p-2 bg-white-200 rounded-10">
                                     <ShareButton />
                                 </div>
+                                {/*<DeleteButton id={id} />*/}
+                                {/*<TestButton id={id} />*/}
                             </div>
                         </div>
                         <div>
