@@ -45,8 +45,8 @@ If you'd like to contribute to this project, please follow these steps:
 
 [Jose Rivera](https://github.com/jGohan-cpu)
 
-Neischaly
+[Neischaly](https://github.com/neisnei)
 
-Kelvin
+[Kelvin Santana](https://github.com/santacoll19)
 
-Miguel
+[Miguel Figuerroa](https://github.com/figue0122)
