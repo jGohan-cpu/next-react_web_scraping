@@ -43,7 +43,7 @@ If you'd like to contribute to this project, please follow these steps:
 
 # Contributors
 
-Jose Rivera
+[Jose Rivera](https://github.com/jGohan-cpu)
 
 Neischaly
 
