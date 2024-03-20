@@ -43,10 +43,10 @@ If you'd like to contribute to this project, please follow these steps:
 
 # Contributors
 
-[Jose Rivera](https://github.com/jGohan-cpu)
+- [Jose Rivera](https://github.com/jGohan-cpu)
 
-[Neischaly](https://github.com/neisnei)
+- [Neischaly](https://github.com/neisnei)
 
-[Kelvin Santana](https://github.com/santacoll19)
+- [Kelvin Santana](https://github.com/santacoll19)
 
-[Miguel Figuerroa](https://github.com/figue0122)
+- [Miguel Figuerroa](https://github.com/figue0122)
