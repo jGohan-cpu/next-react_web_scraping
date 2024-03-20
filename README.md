@@ -41,4 +41,12 @@ If you'd like to contribute to this project, please follow these steps:
 5. Push to the branch (`git push origin feature/my-feature`).
 6. Create a new Pull Request.
 
-# Licensing
+# Contributors
+
+- [Jose Rivera](https://github.com/jGohan-cpu)
+
+- [Neischaly](https://github.com/neisnei)
+
+- [Kelvin Santana](https://github.com/santacoll19)
+
+- [Miguel Figuerroa](https://github.com/figue0122)
